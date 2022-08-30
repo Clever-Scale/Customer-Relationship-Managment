@@ -1,20 +1,21 @@
 import React from "react";
 import { BiUser } from "react-icons/bi";
 import { IoMdArrowRoundBack } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-function CreateUser() {
+function CreateUserPage() {
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col gap-2 h-full">
       <div className="flex items-center gap-2">
         <div>
-          <Link
-            to={"create-user"}
+          <button
+            onClick={() => navigate(-1)}
             className="bg-slate-800 px-4 py-2 rounded-full text-white hover:bg-slate-900 flex items-center justify-center"
           >
             <IoMdArrowRoundBack />
             <span>Back</span>
-          </Link>
+          </button>
         </div>
         <div className="flex items-center gap-2 border-l-8 border-blue-500 px-2">
           <BiUser className="text-xl" />
@@ -40,4 +41,4 @@ function CreateUser() {
   );
 }
 
-export default CreateUser;
+export default CreateUserPage;

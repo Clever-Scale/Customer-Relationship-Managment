@@ -4,8 +4,11 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { BiUser, BiEdit } from "react-icons/bi";
 import { FaPhoneSquareAlt } from "react-icons/fa";
+import useAllUser, { AllUser } from "@apis/userDb/useAllUser";
+function UserListPage() {
+  const [row, setRows] = React.useState<AllUser["data"]>();
+  console.log(row?.current_page);
 
-function UserPage() {
   return (
     <div className="flex flex-col gap-2 h-full">
       <div className="flex justify-between items-center">
@@ -16,7 +19,7 @@ function UserPage() {
         <div>
           <Link
             to={"create-user"}
-            className="bg-blue-500 px-4 py-2 rounded text-white hover:bg-blue-600 flex items-center justify-center"
+            className="bg-blue-500 px-4 py-2 rounded text-white hover:bg-blue-600 flex items-center justify-center shadow-md"
           >
             <AiOutlinePlus />
             <span>Create User</span>
@@ -31,6 +34,7 @@ function UserPage() {
               <th className="text-start py-2 px-2">Name</th>
               <th className="text-start py-2 px-2">Email</th>
               <th className="text-start py-2 px-2">Phone</th>
+              <th className="text-start py-2 px-2">Address</th>
               <th className="text-end py-2 px-2">Action</th>
             </tr>
           </thead>
@@ -46,17 +50,20 @@ function UserPage() {
                 </div>
               </td>
               <td className="py-3 px-2">
+                <p>Yangon</p>
+              </td>
+              <td className="py-3 px-2">
                 <div className="flex justify-end  gap-2">
                   <Link
                     to={"create-user"}
-                    className="bg-green-500 px-2 py-1 rounded text-white hover:bg-green-600 flex items-center justify-center gap-2"
+                    className="bg-green-500 px-2 py-1 rounded text-white hover:bg-green-600 flex items-center justify-center gap-2 shadow-md"
                   >
                     <BiEdit />
                     <span>Edit</span>
                   </Link>
                   <Link
                     to={"create-user"}
-                    className="bg-red-500 px-1 py-1 rounded text-white hover:bg-red-600 flex items-center justify-center gap-2"
+                    className="bg-red-500 px-2 py-1 rounded text-white hover:bg-red-600 flex items-center justify-center gap-2 shadow-md"
                   >
                     <RiDeleteBinLine />
                     <span>Delete</span>
@@ -71,4 +78,4 @@ function UserPage() {
   );
 }
 
-export default UserPage;
+export default UserListPage;

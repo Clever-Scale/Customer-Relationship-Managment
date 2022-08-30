@@ -1,5 +1,4 @@
-import UserLayout from "./UserLayout";
-import UserPage from "./UserPage";
-import CreateUser from "./CreateUser";
+import CreateUserPage from "./CreateUserPage";
+import UserListPage from "./UserListPage";
 
-export { UserLayout, UserPage, CreateUser };
+export { UserListPage, CreateUserPage };
