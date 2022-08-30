@@ -1,34 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import HomeContent from "@components/HomeContent/HomeContent";
+import MainLayout from "@layouts/MainLayout";
+import { useState } from "react";
+import { useRoutes } from "react-router-dom";
+import "./App.css";
+import { CreateUser, UserLayout, UserPage } from "./pages/users";
 
 function App() {
-  const [count, setCount] = useState(0)
+  let element = useRoutes([
+    {
+      path: "/",
+      element: <MainLayout />,
 
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+      children: [
+        {
+          index: true,
+          element: <HomeContent />,
+        },
+        {
+          path: "users",
+          element: <UserLayout />,
+          children: [
+            {
+              index: true,
+              element: <UserPage />,
+            },
+            {
+              path: "create-user",
+              element: <CreateUser />,
+            },
+          ],
+        },
+      ],
+    },
+  ]);
+
+  return element;
 }
 
-export default App
+export default App;
