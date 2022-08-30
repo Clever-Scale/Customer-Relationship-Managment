@@ -1,0 +1,7 @@
+.link {
+  @apply flex justify-start items-center gap-2 w-32 hover:bg-blue-100 hover:text-blue-700 hover:rounded-lg p-2;
+}
+
+.link_icon {
+  font-size: 20px;
+}
