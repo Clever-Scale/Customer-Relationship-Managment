@@ -9,7 +9,7 @@ function MainLayout() {
       <HeaderBar />
       <div className="flex h-[calc(100%-64px)] w-full">
         <Sidebar />
-        <div className="w-[90%]">
+        <div className="w-full md:w-[90%]">
           <Outlet />
         </div>
       </div>
