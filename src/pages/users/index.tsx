@@ -1,4 +1,4 @@
-import CreateUserPage from "./CreateUserPage";
+import EditUserPage from "./EditUserPage";
 import UserListPage from "./UserListPage";
 
-export { UserListPage, CreateUserPage };
+export { UserListPage, EditUserPage };

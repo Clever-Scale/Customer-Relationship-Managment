@@ -1,18 +1,24 @@
+import { AllDepartment } from "@apis/departmentDb/useAllDepartment";
 import useCreateDepartment from "@apis/departmentDb/useCreateDepartment";
-import React, { useRef } from "react";
+import useEditdepartment from "@apis/departmentDb/useEditDepartment";
+import React, { useRef, useState } from "react";
 import { BiBuilding, BiUser } from "react-icons/bi";
 import { IoMdArrowRoundBack } from "react-icons/io";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-function CreateDepartmentPage() {
+function EditDepartmentPage() {
   const navigate = useNavigate();
-  const departmentCreate = useCreateDepartment;
+  let location = useLocation();
+  const data = location.state as AllDepartment["data"]["data"][0];
+  const departmentEdit = useEditdepartment;
   const departmentRef = useRef<HTMLInputElement>(null);
-  const handleCreate = async () => {
+  const [department, setDepartment] = useState(data);
+
+  const handleEdit = async () => {
     const name = departmentRef.current?.value;
 
     if (name) {
-      const res = await departmentCreate({ name });
+      const res = await departmentEdit(data.id, { name });
       if (res.status === "success") {
         navigate("/departments");
       }
@@ -32,7 +38,7 @@ function CreateDepartmentPage() {
         </div>
         <div className="flex items-center gap-2 border-l-8 border-blue-500 px-2">
           <BiBuilding className="text-xl" />
-          <h1 className="text-lg font-semibold">Create Department</h1>
+          <h1 className="text-lg font-semibold">Edit Department</h1>
         </div>
       </div>
       <div>
@@ -45,12 +51,21 @@ function CreateDepartmentPage() {
                 className="w-full border border-slate-500 rounded py-2 px-1"
                 placeholder="Enter Department Name..."
                 ref={departmentRef}
+                value={department.name}
+                onChange={(e) =>
+                  setDepartment((prev) => {
+                    return {
+                      ...prev,
+                      name: e.target.value,
+                    };
+                  })
+                }
               />
             </div>
           </div>
         </div>
         <button
-          onClick={handleCreate}
+          onClick={handleEdit}
           className="bg-blue-500 text-white py-2 px-4 mt-4 hover:bg-blue-700 rounded"
         >
           Save
@@ -60,4 +75,4 @@ function CreateDepartmentPage() {
   );
 }
 
-export default CreateDepartmentPage;
+export default EditDepartmentPage;

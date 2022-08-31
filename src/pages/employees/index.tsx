@@ -1,3 +1,3 @@
 import EmployeePage from "./EmployeeListPage";
-import CreateEmployeePage from "./CreateEmployeePage";
-export { EmployeePage, CreateEmployeePage };
+import EditEmployeePage from "./EditEmployeePage";
+export { EmployeePage, EditEmployeePage };

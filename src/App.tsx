@@ -8,9 +8,13 @@ import { useRoutes } from "react-router-dom";
 import "./App.css";
 import UserLogin from "./pages/auth/user/UserLogin";
 import UserRegister from "./pages/auth/user/UserRegister";
-import { CreateDepartmentPage, DepartmentListPage } from "./pages/department";
-import { CreateEmployeePage, EmployeePage } from "./pages/employees";
-import { CreateUserPage, UserListPage } from "./pages/users";
+import {
+  CreateDepartmentPage,
+  DepartmentListPage,
+  EditDepartmentPage,
+} from "./pages/department";
+import { EditEmployeePage, EmployeePage } from "./pages/employees";
+import { EditUserPage, UserListPage } from "./pages/users";
 
 function App() {
   let element = useRoutes([
@@ -32,8 +36,8 @@ function App() {
               element: <UserListPage />,
             },
             {
-              path: "create-user",
-              element: <CreateUserPage />,
+              path: "edit-user/:id",
+              element: <EditUserPage />,
             },
           ],
         },
@@ -46,8 +50,8 @@ function App() {
               element: <EmployeePage />,
             },
             {
-              path: "create-employee",
-              element: <CreateEmployeePage />,
+              path: "edit-employee",
+              element: <EditEmployeePage />,
             },
           ],
         },
@@ -62,6 +66,10 @@ function App() {
             {
               path: "create-department",
               element: <CreateDepartmentPage />,
+            },
+            {
+              path: "edit-department/:id",
+              element: <EditDepartmentPage />,
             },
           ],
         },

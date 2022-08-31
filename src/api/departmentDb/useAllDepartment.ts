@@ -4,10 +4,6 @@ import fetcher from "@apis/fetcher";
 export interface Datum {
   id: number;
   name: string;
-  password: string;
-  email: string;
-  phone_no: string;
-  address: string;
   created_at: Date;
   updated_at: Date;
 }
@@ -34,15 +30,16 @@ export interface Data {
   total: number;
 }
 
-export interface AllUser {
+export interface AllDepartment {
   status: string;
   data: Data;
   message: string;
 }
-const useAllUser = () => {
+
+const useAllDepartment = () => {
   const url = import.meta.env.VITE_API_URL;
-  const res = useSWR<AllUser>([`${url}all-users`], fetcher);
+  const res = useSWR<AllDepartment>([`${url}departments`], fetcher);
   return res;
 };
 
-export default useAllUser;
+export default useAllDepartment;

@@ -1,6 +1,6 @@
 import React from "react";
 
-function CreateEmployeePage() {
+function EditEmployeePage() {
   return (
     <div>
       <h1>Create Page</h1>
@@ -8,4 +8,4 @@ function CreateEmployeePage() {
   );
 }
 
-export default CreateEmployeePage;
+export default EditEmployeePage;

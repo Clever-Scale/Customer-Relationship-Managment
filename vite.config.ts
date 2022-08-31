@@ -13,6 +13,7 @@ export default defineConfig({
     alias: {
       "@layouts": path.resolve(__dirname, "./src/layouts"),
       "@components": path.resolve(__dirname, "./src/components"),
+      "@apis": path.resolve(__dirname, "./src/api"),
     },
   },
 });
